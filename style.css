@@ -1,0 +1,26 @@
+body{
+	margin:0px;
+}
+.titles{
+	text-align: center;
+}
+.labels{
+	margin-left: 100px;
+	margin-top: 300px;
+}
+.textfield{
+	border-style: ridge;
+}
+.login-form{
+	width:500px;
+	height: 300px;
+/*	background-color:red; */
+	margin-left: 500px;
+	margin-top: 50px;
+}
+.header-div{
+	height: 100px;
+}
+.error{
+	color: red;
+}
