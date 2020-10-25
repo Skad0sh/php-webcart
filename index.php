@@ -16,26 +16,24 @@ include_once "dbh.php";
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$user = input_test($_POST["username"]);
 			$pass = input_test($_POST["password"]);
+
 			$query = "SELECT * FROM users;";
 			$resultSet = mysqli_query($conn,$query);
-
 			if(empty($user) or empty($pass)){
 				$errorLabel = "Username or Password field is empty";
-			}else{
-					while($row = mysqli_fetch_assoc($resultSet)){
-						if($user == $row["user"] && $pass == $row["password"]){
-							header("Location: http://localhost:4000/Desktop/php/main.php");
-							$_SESSION["user"] = $user;
-						}
-						else{
-							$errorLabel = "Password or username is incorrect,pls try again";
-						}
-						
 			}
-								
-				
+			else{
+				while($row = mysqli_fetch_assoc($resultSet)){
+					if($user == $row["user"] && $pass == $row["password"]){
+						header("Location: http://localhost:4000/Desktop/php/main.php");
+						$_SESSION["user"] = $user;
+					}
+					else{
+						$errorLabel = "Password or username is incorrect,pls try again";
+						header("Location: http://localhost:4000/Desktop/php/index.php?username=".$user);
+					}		
+				}				
 			}
-		
 		}
 		function input_test($input){
 			$input = trim($input);
@@ -43,6 +41,7 @@ include_once "dbh.php";
 			$input = htmlspecialchars($input);
 			return $input;
 		}
+
 	?>
 
 
@@ -65,3 +64,4 @@ include_once "dbh.php";
 
 	
 </body>
+</html>
