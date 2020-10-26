@@ -1,5 +1,6 @@
 <?php
 // Start the session
+session_destroy();
 session_start();
 include_once "dbh.php";
 ?>
@@ -27,10 +28,10 @@ include_once "dbh.php";
 					if($user == $row["user"] && $pass == $row["password"]){
 						header("Location: http://localhost:4000/Desktop/php/main.php");
 						$_SESSION["user"] = $user;
+						$_SESSION["admin"] = $row["admin"];
 					}
 					else{
 						$errorLabel = "Password or username is incorrect,pls try again";
-						header("Location: http://localhost:4000/Desktop/php/index.php?username=".$user);
 					}		
 				}				
 			}
