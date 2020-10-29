@@ -18,17 +18,24 @@ if($_SESSION["admin"]!="True"){
 		$errorLabel = "";
 		$errorLabel2 = "";
 		if($_SERVER["REQUEST_METHOD"]=="POST"){
-			$product = $_POST["proName"];
-			$price = $_POST["proPrice"];
+			$product = input_test($_POST["proName"]);
+			$price = input_test($_POST["proPrice"]);
 			$link = $_POST["proLink"];
 			$adminName = input_test($_POST["adminName"]);
-
-			$query = "INSERT INTO products VALUES('$product','$price','$link');";
-			$stat = mysqli_query($conn,$query);
-			if($stat){
-				$errorLabel = "Successfuly Added new product to database!";
+			if(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$link)){
+				$errorLabel = "Invalid Email!";
+			}else if(empty($product)){
+				$errorLabel = "Product Name cannot be empty!";
+			}else if(empty($price)){
+				$errorLabel = "Product price cannot be empty!";
 			}else{
-				$errorLabel = "Error adding new product to database!";
+				$query = "INSERT INTO products VALUES('$product','$price','$link');";
+				$stat = mysqli_query($conn,$query);
+				if($stat){
+					$errorLabel = "Successfuly Added new product to database!";
+				}else{
+					$errorLabel = "Error adding new product to database!";
+				}
 			}
 			if(empty($adminName)){
 				$errorLabel2 = "";
