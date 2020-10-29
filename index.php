@@ -1,5 +1,6 @@
 <?php
 // Start the session
+session_start();
 session_destroy();
 session_start();
 include_once "dbh.php";
@@ -65,4 +66,5 @@ include_once "dbh.php";
 
 	
 </body>
-</html>
+<html>
+
