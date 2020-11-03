@@ -26,7 +26,7 @@ include_once "dbh.php";
 			}
 			else{
 				while($row = mysqli_fetch_assoc($resultSet)){
-					if($user == $row["user"] && $pass == $row["password"]){
+					if($user === $row["user"] && $pass === $row["password"]){
 						header("Location: http://localhost:4000/Desktop/php/main.php");
 						$_SESSION["user"] = $user;
 						$_SESSION["admin"] = $row["admin"];
@@ -48,8 +48,8 @@ include_once "dbh.php";
 
 
 	<div class="header-div">
-	<h3 style="text-align: left;margin-left: 100px;"><?php echo date("d/m/Y, l"); ?></h3>
 	<h1 class="titles">Sign in to WebCart</h1>
+	<h5 style="text-align: center;margin-top: -25px;"><?php echo date("d/m/Y, l"); ?></h5>
 	</div>
 	<div class="login-form">
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -61,10 +61,9 @@ include_once "dbh.php";
 			<span class="error" style="margin-left: 120px;"><?php echo $errorLabel;?></span><br><br>
 			<input type="submit" value="Sign in" style="margin-left: 200px; width: 100px; height: 50px;"><br><br><br>
 		</form>
+		<a href="http://localhost:4000/Desktop/php/register.php" style="text-decoration: none;margin-left: 150px;">Don't have an account? Sign in</a>
 	</div>
-	<a href="http://localhost:4000/Desktop/php/register.php">Don't have an account? Sign in</a>
 
 	
 </body>
 <html>
-
