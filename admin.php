@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 include_once "dbh.php";
-if($_SESSION["admin"]!="True"){
+if($_SESSION["admin"]!=="True"){
 	die("You are not an Admin!");
 }
 ?>
@@ -22,14 +22,12 @@ if($_SESSION["admin"]!="True"){
 			$price = input_test($_POST["proPrice"]);
 			$link = $_POST["proLink"];
 			$adminName = input_test($_POST["adminName"]);
-			if(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$link)){
-				$errorLabel = "Invalid Email!";
-			}else if(empty($product)){
+			if(empty($product)){
 				$errorLabel = "Product Name cannot be empty!";
 			}else if(empty($price)){
 				$errorLabel = "Product price cannot be empty!";
 			}else{
-				$query = "INSERT INTO products VALUES('$product','$price','$link');";
+				$query = "INSERT INTO products(proName,proPrice,proLink) VALUES('$product','$price','$link');";
 				$stat = mysqli_query($conn,$query);
 				if($stat){
 					$errorLabel = "Successfuly Added new product to database!";
