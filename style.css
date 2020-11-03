@@ -16,11 +16,26 @@ body{
 	height: 300px;
 /*	background-color:red; */
 	margin-left: 500px;
-	margin-top: 50px;
+	margin-top: 5px;
 }
 .header-div{
 	height: 100px;
 }
 .error{
 	color: red;
+}
+h{padding:10px 0px 10px 0px;}
+
+.cart-button{
+	width: 100px;
+	height: 50px;
+	background-color: rgb(227, 179, 36);
+}
+
+.nav-button{
+	margin-bottom:30px;
+	margin-left: 100px;
+	margin-top: 20px;
+	height: 30px;
+	width: 100px;
 }
