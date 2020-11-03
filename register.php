@@ -13,7 +13,7 @@ include_once "dbh.php";
 <body>
 	<?php
 		$errorLabel = "";
-		if($_SERVER["REQUEST_METHOD"]=="POST"){
+		if($_SERVER["REQUEST_METHOD"]==="POST"){
 			$user = input_test($_POST["username"]);
 			$pass = input_test($_POST["password"]);
 			$repass = input_test($_POST["repassword"]);
@@ -26,10 +26,10 @@ include_once "dbh.php";
 					$duplicate = 1;
 				}
 			}
-			if($duplicate == 1){
+			if($duplicate === 1){
 				$errorLabel = "Account with this name already exists!";
 			}
-			elseif($pass!=$repass){
+			elseif($pass!==$repass){
 				$errorLabel = "Password's does not match!";
 			}
 			else{
@@ -60,8 +60,9 @@ include_once "dbh.php";
 			<span class="error" style="margin-left: 120px;"><?php echo $errorLabel;?></span><br><br>
 			<input type=submit value="Sign up" style="margin-left: 200px; width: 100px; height: 50px;"><br>
 		</form>
+		<br><br><br>
+		<button><a href="http://localhost:4000/Desktop/php/" style="text-decoration: none;">Go back to Login</a></button>
 	</div>
-	<button><a href="http://localhost:4000/Desktop/php/">Go back to Login</a></button>
 
 </body>
 </html>
